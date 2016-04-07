@@ -3,24 +3,24 @@
     .func main
    
 main:
-    BL  _prompt             @ branch to prompt procedure with return
-    BL  _scanf              @ branch to scanf procedure with return
-    MOV R4, R0              @ move return value R0 to argument register R1
+    BL  _prompt             @ branch to _prompt procedure with return
+    BL  _scanf              @ branch to _scanf procedure with return
+    MOV R4, R0              @ move return value R0 to argument register R4
  
-    BL  char_prompt         @ branch to printf procedure with return
-    BL  _getchar	    @ brach to getchar procedure with return
-    MOV R5, R0              @ move return value R0 to argument register R3
+    BL  char_prompt         @ branch to char_prompt procedure with return
+    BL  _getchar	        @ brach to _getchar procedure with return
+    MOV R5, R0              @ move return value R0 to argument register R5
  
-    BL  _prompt             @ branch to prompt procedure with return
-    BL  _scanf              @ branch to scanf procedure with return
-    MOV R6, R0              @ move return value R0 to argument register R1
+    BL  _prompt             @ branch to _prompt procedure with return
+    BL  _scanf              @ branch to _scanf procedure with return
+    MOV R6, R0              @ move return value R0 to argument register R6
  
-    MOV R1, R4
-    MOV R2, R5
-    MOV R3, R6
-    BL  _compare            @ branch to compare procedure
-    MOV R1, R0
-    BL  _ans_printf         @ branch to printf procedure with return
+    MOV R1, R4              @ move value from register R4 to register R1
+    MOV R2, R5              @ move value from register R5 to R2
+    MOV R3, R6              @ move value from register R6 to R3
+    BL  _compare            @ branch to _compare procedure with return
+    MOV R1, R0              @ move return value R0 to R1
+    BL  _ans_printf         @ branch to _ans_printf procedure with return
     
     B   main                @ branch to main procedure with no return
    
@@ -34,12 +34,12 @@ _prompt:
     MOV PC, LR              @ return
 
 char_prompt:
-    MOV R7, #4 		    @ write syscall, 4
+    MOV R7, #4 		        @ write syscall, 4
     MOV R0, #1              @ output stream to monitor, 1
     MOV R2, #29             @ print string length
     LDR R1, =cprompt_str    @ string at label cprompt_str
-    SWI 0		    @ execute syscall
-    MOV PC, LR 		    @ return    
+    SWI 0		            @ execute syscall
+    MOV PC, LR 		        @ return    
 
 
 _ans_printf:
@@ -51,13 +51,13 @@ _ans_printf:
 
 _compare:
     CMP R2, #'+'	    @ compare against the constant char '+'
-    BEQ sum                 @ branch to equal handler
+    BEQ sum             @ branch to equal handler
     CMP R2, #'-'	    @ compare against the constant char '-'
     BEQ difference	    @ branch to equal handler
-    CMP R2, #'*'	    @ compare against the constant char '-'
-    BEQ product	            @ branch to equal handler
-    CMP R2, #'M'	    @ compare against the constant char '-'
-    BEQ maximum	    	    @ branch to equal handler
+    CMP R2, #'*'	    @ compare against the constant char '*'
+    BEQ product	        @ branch to equal handler
+    CMP R2, #'M'	    @ compare against the constant char 'M'
+    BEQ maximum	    	@ branch to equal handler
     MOV PC, LR
 
 sum:
@@ -68,19 +68,19 @@ sum:
 difference:
     MOV R7, LR
     SUB R0, R1, R3          @ R1 - R3 = R0
-    MOV PC, R7
+    MOV PC, R7              @ return
 
 product:
     MOV R7, LR
     MUL R0, R1, R3          @ R0 = R1*R3
-    MOV PC, R7
+    MOV PC, R7              @ return
 
 maximum:      
     MOV R7, LR         
     CMP R1, R3              @ compare R1, R3
     MOVLE R1, R3            @ overwrite R1 with R3 if R1 is lesser than or equal to R3
     MOV R0, R1              @ move the value from reg R1 to reg R0	    
-    MOV PC, R7
+    MOV PC, R7              @ return
 
 
 _scanf:
@@ -109,5 +109,5 @@ _getchar:
 format_str:     .asciz      "%d"
 prompt_str:     .ascii      "Type a number and press enter: "
 cprompt_str:    .ascii      "Enter any +,-,*,M character: "
-answer_str:	.asciz	    "The answer is: %d\n"
+answer_str:	    .asciz	    "The answer is: %d\n"
 read_char:      .ascii      " "
