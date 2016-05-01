@@ -7,7 +7,7 @@ main:
 	MOV R0, #0		@ initialize index variable
 	BL _generate
 	MOV R0, #0
-	BL _sort
+	BL _sort_ascending
 	MOV R0, #0
 	BL _readloop
 	B _exit
@@ -27,8 +27,8 @@ _generate:
 	PUSHEQ {LR}
 	CMP R0, #20		@ check to see if we are done iterating
 	POPEQ {PC}		@ exit loop if done
-	LDR R1, =a		@ get address of a
-	LDR R3, =b		@ get address of b
+	LDR R1, =array_a	@ get address of a
+	LDR R3, =array_b	@ get address of b
 	LSL R2, R0, #2		@ multiply index * 4 to get array offset
 	LSL R5, R0, #2
 	ADD R2, R1, R2		@ R2 now has the element address
@@ -52,8 +52,8 @@ _readloop:
 	PUSHEQ {LR}
 	CMP R0, #20		@ check to see if we are done iterating
 	POPEQ {PC}		@ exit loop if done
-	LDR R1, =a		@ get address of a
-	LDR R3, =b		
+	LDR R1, =array_a	@ get address of a
+	LDR R3, =array_b	
 	LSL R2, R0, #2		@ multiply index * 4 to get array offset
 	LSL R5, R0, #2
 	ADD R2, R1, R2		@ R2 now has the element address
@@ -112,12 +112,12 @@ _printfB:
 	BL printf
 	POP {PC}
 	
-_sort:
+_sort_ascending:
 	PUSH {LR}
 loop_i:
 	CMP R0, #19		@ R0 = j
 	POPEQ {PC} 
-	LDR R3, =b		@ R3 contains the address of array b	
+	LDR R3, =array_b	@ R3 contains the address of array b	
 	LSL R2, R0, #2   	@ initiate the process of reading the array
 	ADD R2, R3, R2
 	LDR R2, [R2]		@ a[iMin] = R2
@@ -155,8 +155,8 @@ swap:
 .data
 
 .balign	4
-a:	.skip		80
-b:	.skip		80
+array_a:	.skip		80
+array_b:	.skip		80
 printf_str: 	.asciz		"a[%d] = %d,"
 printf_strB:	.asciz		"\tb[%d] = %d\n"
 exit_str:	.ascii		"Terminating Program.\n"
