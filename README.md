@@ -12,6 +12,12 @@ The main function consists of a loop that continuously checks for keyboard input
 where <OPERATION_CODE> can be any of the four characters {+, -, *, M}.<br/><br/>
 
 Below are some example use cases:<br/>
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
  
 --- | --- | --- | --- |---
  | 5 | 100 | 5 | 50
