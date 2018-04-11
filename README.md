@@ -44,6 +44,7 @@ Result ->   `There are 5 partitions of 5 using integers up to 3`<br/><br/>
 # sortRandomNumbers.s | Description
 
 iteratively populated a fixed-size array of 20 elements, "array_a", with values provided by a "generate" function. Once "array_a" has been populated by "generate", the program then stores and sorts the values in increasing order into "array_b", a second fixed-size integer array of 20 elements. The generate function is described (in C) below:<br/>
+
 void generate(int n) {<br/>
 <pre><code>  for(int i=0; i<20; i+=2) {</code></pre>
 <pre><code>    array_a[i] = n+i;</code></pre>
@@ -51,4 +52,7 @@ void generate(int n) {<br/>
 <pre><code>  }</code></pre>
 }<br/>
 
+# arrayFunctions.s | Description
 
+
+Iteratively populated a fixed-size integer array of 10 elements, array_a, with integer values provided by scanf. The user will enter 10 integer values, one per line, and the program will store the 10 values in array_a[0], array_a[1], …, array_a[9]. Once all of the integers are entered, the program will then calculate the minimum and maximum values in the array, and also the sum of values in the array. Finally, the entire contents of the array will be printed followed by the minimum value, maximum value, and overall sum.
