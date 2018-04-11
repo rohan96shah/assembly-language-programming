@@ -1,22 +1,22 @@
 # CSE 2312 | Computer Organization and Assembly Programming Language Class | University of Texas at Arlington
 
-# Calculator.s | Description
+## Calculator.s | Description
 
-Programmed a simple calculator for the Raspbian OS using ARM Assembly. The program consists of the following procedure calls: SUM, DIFFERENCE, PRODUCT and MAX.
+Programmed a simple calculator for the Raspbian OS using ARM Assembly. The program consists of the following procedure calls: SUM, DIFFERENCE, PRODUCT and MAX.<br/>
 
-The main function consists of a loop that continuously checks for keyboard input in the following pattern:
-<OPERAND_1><ENTER>
-<OPERATION_CODE><ENTER>
-<OPERAND_2><ENTER>
+The main function consists of a loop that continuously checks for keyboard input in the following pattern:<br/>
+<OPERAND_1><ENTER><br/>
+<OPERATION_CODE><ENTER><br/>
+<OPERAND_2><ENTER><br/><br/>
   
-where <OPERATION_CODE> can be any of the four characters{+, -, *, M}. 
+where <OPERATION_CODE> can be any of the four characters {+, -, *, M}.<br/><br/>
 
-Below are some example use cases:
-           5            100           5               50               
-           +            M             *               -
-           15           200           20              20
-result ->  20           200           100             30
+Below are some example use cases:<br/>
 
+ | 5 | 100 | 5 | 50
+ | + | M | * | -
+ | 15 | 200 | 20 | 20
+ result | 20 | 200 | 100 | 30
 
 # | Description
 
