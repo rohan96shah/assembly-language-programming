@@ -50,7 +50,7 @@ void generate(int n) {<br/>
 <pre><code>    array_a[i] = n+i;</code></pre>
 <pre><code>    array_a[i+1] = -(n+i+1);</code></pre>
 <pre><code>  }</code></pre>
-}<br/>
+`}`<br/>
 
 # arrayFunctions.s | Description
 
