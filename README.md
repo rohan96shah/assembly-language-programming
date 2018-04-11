@@ -45,10 +45,10 @@ Result ->   `There are 5 partitions of 5 using integers up to 3`<br/><br/>
 
 iteratively populated a fixed-size array of 20 elements, "array_a", with values provided by a "generate" function. Once "array_a" has been populated by "generate", the program then stores and sorts the values in increasing order into "array_b", a second fixed-size integer array of 20 elements. The generate function is described (in C) below:<br/>
 `void generate(int n) {`<br/>
-`<pre>  for(int i=0; i<20; i+=2) {</pre>`<br/>
-`<pre>    array_a[i] = n+i;</pre>`<br/>
-`<pre>    array_a[i+1] = -(n+i+1);</pre>`<br/>
-`<pre>  }</pre>`<br/>
+<pre><code>`  for(int i=0; i<20; i+=2) {`</code></pre><br/>
+<pre><code>`    array_a[i] = n+i;`</code></pre><br/>
+<pre><code>`    array_a[i+1] = -(n+i+1);`</code></pre><br/>
+<pre><code>`  }`</code></pre><br/>
 `}`<br/>
 
 
